@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="veterinaria, huellas, mascotas, clinica veterinaria, cuidado de mascotas"
+    />
+    <meta
+      name="description"
+      content="Veterinaria Huellas: atención veterinaria y estética para mascotas. Reservas online y cuidado profesional."
+    />
+    <meta
+      name="author"
+      content="Emiliano Mandacen (331839), Lautaro Álvarez (329447)"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" href="/img/Logo.png" type="image/x-icon" />
+    <title>Veterinaria Huellas</title>
+  </head>
+
+  <body>
+    <!-- ================= HEADER / NAV ================= -->
+    <header class="hero">
+      <nav class="nav">
+        <!-- Logo -->
+        <div class="logo">
+          <img
+            src="/img/Logo.png"
+            alt="Huellas - Clínica Veterinaria"
+            class="logo-img"
+          />
+        </div>
+
+        <!-- Navegación principal -->
+        <ul class="nav-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#trabajos">Trabajos</a></li>
+          <li><a href="#reserva">Reservar</a></li>
+          <li><a href="#ubicacion">Contacto</a></li>
+        </ul>
+
+        <!-- Botón login -->
+        <button
+          class="btn-Login"
+          type="button"
+          onclick="window.location.href = '/Login.html'"
+        >
+          Iniciar sesión
+        </button>
+      </nav>
+    </header>
+
+    <!-- ================= BANNER PRINCIPAL ================= -->
+    <section id="BannerVet">
+      <img src="/img/Banner.png" alt="Veterinaria Huellas" class="banner-img" />
+
+      <!-- Texto superpuesto -->
+      <div class="banner-overlay">
+        <div class="hero-text">
+          <h2>Cuidamos la salud de tu mascota</h2>
+          <p>Veterinaria especializada en perros y gatos</p>
+          <a href="#reserva" class="btn-primary">Reservar turno</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICIOS ================= -->
+    <section id="servicios" class="section">
+      <h2>Servicios</h2>
+
+      <!-- Cards de servicios -->
+      <div class="cards">
+        <div
+          class="card"
+          data-servicio="Consulta Veterinaria"
+          data-tipo="veterinaria"
+        >
+          <img src="/img/ServicioConsulta.png" alt="Consulta veterinaria" />
+          <h3>Consulta Veterinaria</h3>
+          <p>Atención médica general.</p>
+          <span>$500 (Precio Base)</span>
+        </div>
+
+        <div class="card" data-servicio="Vacunación" data-tipo="veterinaria">
+          <img src="/img/ServicioVacuna.png" alt="Vacunación" />
+          <h3>Vacunación</h3>
+          <p>Vacunas obligatorias.</p>
+          <span>$500</span>
+        </div>
+
+        <div
+          class="card"
+          data-servicio="Control General"
+          data-tipo="veterinaria"
+        >
+          <img src="/img/ServicioControlGeneral.png" alt="Control general" />
+          <h3>Control General</h3>
+          <p>Chequeo preventivo.</p>
+          <span>$500</span>
+        </div>
+
+        <div class="card" data-servicio="Baño y Corte" data-tipo="estetica">
+          <img src="/img/ServicioBanoycorte.png" alt="Baño y corte" />
+          <h3>Baño y Corte</h3>
+          <p>Estética completa.</p>
+          <span>$1800</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EQUIPO ================= -->
+    <section id="equipo" class="section pastel">
+      <h2>Nuestro Equipo</h2>
+
+      <!-- Veterinarios -->
+      <div class="team">
+        <div class="member">
+          <img src="/img/Veterinario1.png" alt="Veterinario" />
+          <p>Dr. López</p>
+        </div>
+        <div class="member">
+          <img src="/img/Veterinario2.png" alt="Veterinaria" />
+          <p>Dra. Martínez</p>
+        </div>
+        <div class="member">
+          <img src="/img/Veterinario3.png" alt="Veterinario" />
+          <p>Dr. Rodríguez</p>
+        </div>
+      </div>
+
+      <!-- Estilistas -->
+      <div class="team">
+        <div class="member">
+          <img src="/img/Estilista1.png" alt="Estilista" />
+          <p>Lucía</p>
+        </div>
+        <div class="member">
+          <img src="/img/Estilista2.png" alt="Estilista" />
+          <p>María</p>
+        </div>
+        <div class="member">
+          <img src="/img/Estilista3.png" alt="Estilista" />
+          <p>Claudio</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TRABAJOS REALIZADOS ================= -->
+    <section id="trabajos" class="section">
+      <h2>Trabajos realizados</h2>
+      <p class="trabajos-desc">
+        Resultados reales, pacientes felices y dueños tranquilos 🐾
+      </p>
+
+      <!-- Carrusel de trabajos -->
+      <div class="carousel-container">
+        <button class="carousel-btn prev" onclick="cambiarDiapositiva(-1)">
+          ❮
+        </button>
+
+        <div class="carousel-wrapper">
+          <div class="carousel">
+            <div class="carousel-item">
+              <img src="img/carrusel1.png" alt="Consulta veterinaria" />
+              <h3>Consulta Veterinaria</h3>
+              <p>Evaluación clínica general y diagnóstico preventivo.</p>
+            </div>
+
+            <div class="carousel-item">
+              <img src="img/carrousel2.png" alt="Vacunación" />
+              <h3>Vacunación</h3>
+              <p>Aplicación de vacunas obligatorias y refuerzos.</p>
+            </div>
+
+            <div class="carousel-item">
+              <img src="img/carrousel3.png" alt="Baño y corte" />
+              <h3>Baño y Corte</h3>
+              <p>Estética completa con productos especializados.</p>
+            </div>
+
+            <div class="carousel-item">
+              <img src="img/carrousel4.png" alt="Control general" />
+              <h3>Control General</h3>
+              <p>Chequeo integral para el cuidado preventivo.</p>
+            </div>
+
+            <div class="carousel-item">
+              <img
+                src="https://images.unsplash.com/photo-1630359486912-4b085e38f1e7?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Corte de uñas"
+              />
+              <h3>Corte de Uñas</h3>
+              <p>Mantenimiento seguro y sin estrés.</p>
+            </div>
+
+            <div class="carousel-item">
+              <img
+                src="https://images.pexels.com/photos/6235239/pexels-photo-6235239.jpeg"
+                alt="Atención felina"
+              />
+              <h3>Atención Felina</h3>
+              <p>Consultas adaptadas a gatos.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-btn next" onclick="cambiarDiapositiva(1)">
+          ❯
+        </button>
+      </div>
+
+      <!-- Indicadores de página -->
+      <div class="carousel-indicators" id="indicators"></div>
+    </section>
+
+    <!-- ================= RESERVA DE TURNOS ================= -->
+    <section id="reserva" class="section pastel">
+      <h2>Reservar Turno</h2>
+
+      <!-- Formulario de reserva -->
+      <form class="form" onsubmit="return false;">
+        <input type="text" id="dueno" placeholder="Nombre del dueño" required />
+        <input
+          type="text"
+          id="mascota"
+          placeholder="Nombre de la mascota"
+          required
+        />
+        <input type="tel" id="telefono" placeholder="Teléfono" required />
+        <div class="fake-date" id="fakeFecha">
+          <span class="date-placeholder">Seleccione fecha:</span>
+          <input type="date" id="fecha" required />
+        </div>
+
+        <select id="hora" required>
+          <option value="">Seleccione hora</option>
+        </select>
+        <select id="serviciosSelect" required>
+          <option value="">Seleccione servicio</option>
+          <option value="Consulta Veterinaria" data-tipo="veterinaria">
+            Consulta Veterinaria
+          </option>
+          <option value="Vacunación" data-tipo="veterinaria">Vacunación</option>
+          <option value="Control General" data-tipo="veterinaria">
+            Control General
+          </option>
+          <option value="Baño y Corte" data-tipo="estetica">
+            Baño y Corte
+          </option>
+        </select>
+
+        <select id="profesionalSelect" required>
+          <option value="">Seleccione profesional</option>
+        </select>
+
+        <button type="button" onclick="confirmarReserva()">
+          Confirmar reserva
+        </button>
+
+        <small>
+          * Turnos cada 30 minutos <br />
+          * El costo puede variar según el servicio
+        </small>
+      </form>
+    </section>
+
+    <!-- ================= CONTACTO & UBICACIÓN ================= -->
+    <section id="ubicacion" class="section">
+      <h2>Contacto y Ubicación</h2>
+
+      <div class="ubicacion-container">
+        <!-- Información -->
+        <div class="ubicacion-info">
+          <p><strong>Dirección:</strong> Montevideo, Uruguay</p>
+          <p><strong>Teléfono:</strong> 099 123 456</p>
+          <p><strong>Horarios:</strong></p>
+          <ul>
+            <li>L–V: 9 a 18</li>
+            <li>Sábados: 9 a 12:30</li>
+          </ul>
+        </div>
+
+        <!-- Mapa -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3272.190577609104!2d-56.18915184908482!3d-34.90166661873789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f8032f2ec6a2b%3A0x20fd10ea401868bf!2sUniversidad%20ORT%20Uruguay%20-%20Campus%20Centro!5e0!3m2!1ses-419!2suy!4v1770125561911!5m2!1ses-419!2suy"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        >
+        </iframe>
+      </div>
+    </section>
+
+    <!-- ================= ALERTA DE CONFIRMACIÓN ================= -->
+    <div id="alerta-overlay" class="alerta-overlay">
+      <div class="alerta-content">
+        <h2>¡Reserva Confirmada! ✅</h2>
+        <p>Tu turno ha sido reservado exitosamente.</p>
+        <button onclick="cerrarAlerta()" class="btn-alerta">Aceptar</button>
+      </div>
+    </div>
+
+    <!-- ================= ALERTA DE ERROR ================= -->
+    <div id="alerta-error-overlay" class="alerta-overlay error">
+      <div class="alerta-content">
+        <h2>⚠️</h2>
+        <p id="alerta-error-mensaje"></p>
+        <button onclick="cerrarAlertaError()" class="btn-alerta error">
+          Aceptar
+        </button>
+      </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+      <p>© Veterinaria Huellas</p>
+
+      <div class="footer-redes">
+        <span>Nuestras redes:</span>
+
+        <div class="social">
+          <a href="#" aria-label="Instagram" target="_blank">
+            <img src="/img/Instagram_icon.png" alt="Instagram" /> Instagram
+          </a>
+          <a href="#" aria-label="Facebook" target="_blank">
+            <img src="/img/Facebook_icon.png" alt="Facebook" /> Facebook
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="src/core/script.js"></script>
+  </body>
+</html>
