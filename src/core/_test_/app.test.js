@@ -1,6 +1,6 @@
 let login, logout;
 
-describe("app.js - login y logout (sin jsdom)", () => {
+describe("app.js - login y logout ", () => {
   let elements;
   let mockLocalStorage;
 

@@ -21,12 +21,24 @@ body {
   background: #e6f4ee;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   max-width: 100%;
+  /* keep flex behaviour inherited from .nav */
 }
 
 .admin-nav h1 {
   font-size: 1.3rem;
   font-weight: 700;
   color: #2f4f3f;
+  text-align: center;          /* center text within its container */
+  width: 100%;                /* allow full width for centering */
+}
+
+/* center logo contents when inside admin navbar */
+.admin-nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-content: center;    /* horizontally center the logo area */
+  flex: 1;                    /* take available space so logout button stays right */
 }
 
 
