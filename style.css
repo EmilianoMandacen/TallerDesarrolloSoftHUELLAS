@@ -28,8 +28,10 @@ body {
   font-size: 1.3rem;
   font-weight: 700;
   color: #2f4f3f;
-  text-align: center;          /* center text within its container */
-  width: 100%;                /* allow full width for centering */
+  text-align: center;
+  /* center text within its container */
+  width: 100%;
+  /* allow full width for centering */
 }
 
 /* center logo contents when inside admin navbar */
@@ -37,8 +39,10 @@ body {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  justify-content: center;    /* horizontally center the logo area */
-  flex: 1;                    /* take available space so logout button stays right */
+  justify-content: center;
+  /* horizontally center the logo area */
+  flex: 1;
+  /* take available space so logout button stays right */
 }
 
 
@@ -683,8 +687,8 @@ iframe {
   font-size: 1rem;
   font-weight: 600;
   transition:
-  background 0.3s ease,
-  transform 0.2s ease;
+    background 0.3s ease,
+    transform 0.2s ease;
 }
 
 .btn-alerta:hover {
@@ -857,7 +861,7 @@ textarea {
   -webkit-appearance: none;
   appearance: none;
   border-radius: 12px;
-  font-size: 16px; 
+  font-size: 16px;
   background-color: #fff;
 }
 
@@ -878,7 +882,7 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #6fa88c; 
+  border-color: #6fa88c;
 }
 
 select {
@@ -920,7 +924,8 @@ select {
   color: #999;
   font-size: 16px;
   pointer-events: none;
-  display: none; /* 👈 por defecto OFF */
+  display: none;
+  /* 👈 por defecto OFF */
 }
 
 /* SOLO en iOS */
@@ -941,6 +946,7 @@ select {
   NAVBAR - MOBILE FIX
 ========================= */
 @media (max-width: 768px) {
+
   .tabla-reservas th,
   .tabla-reservas td {
     padding: 0.4rem;
@@ -1005,4 +1011,156 @@ select {
   .footer .social {
     justify-content: center;
   }
+}
+
+
+
+
+/* =========================
+  CONTACTO MEJORADO
+========================= */
+
+.ubicacion-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: stretch;
+  margin-top: 2rem;
+}
+
+.ubicacion-info {
+  background: linear-gradient(135deg, #eef6f1, #e0f0e8);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ubicacion-info p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #355f4b;
+}
+
+.ubicacion-info strong {
+  color: #2f4f3f;
+  font-weight: 700;
+}
+
+.ubicacion-info ul {
+  margin: 0.5rem 0 0 1rem;
+  padding: 0;
+}
+
+.ubicacion-info li {
+  margin-bottom: 0.5rem;
+  list-style: none;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.ubicacion-info li::before {
+  content: "🐾";
+  position: absolute;
+  left: 0;
+}
+
+/* Mapa más elegante */
+.ubicacion-container iframe {
+  height: 100%;
+  min-height: 320px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+  FOOTER PREMIUM
+========================= */
+
+.footer {
+  background: linear-gradient(135deg, #355f4b, #2f4f3f);
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer p {
+  margin: 0;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.footer-redes {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-redes span {
+  font-weight: 600;
+}
+
+.footer .social {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.footer .social a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 0.9rem;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.footer .social a:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+}
+
+.footer .social img {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 768px) {
+  .ubicacion-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .ubicacion-info {
+    text-align: center;
+  }
+
+  .ubicacion-info li {
+    padding-left: 0;
+  }
+
+  .ubicacion-info li::before {
+    position: static;
+    margin-right: 0.5rem;
+  }
+}
+
+#confirmarReserva {
+  text-align: left;
+  margin: 1rem 0 2rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+#confirmarReserva strong {
+  color: #355f4b;
 }

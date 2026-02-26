@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+
   // ===============================
   // CARRUSEL DE TRABAJOS
   // ===============================
+
   const carousel = document.querySelector(".carousel");
   const indicators = document.getElementById("indicators");
   const items = document.querySelectorAll(".carousel-item");
   let currentIndex = 0;
 
-  // Crear indicadores
   if (items.length > 0) {
     items.forEach((_, index) => {
       const indicator = document.createElement("div");
@@ -29,17 +30,20 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = index;
     carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-    // Actualizar indicadores
     document.querySelectorAll(".carousel-indicator").forEach((indicator, i) => {
       indicator.classList.toggle("active", i === currentIndex);
     });
   }
 
-  const fecha = document.getElementById("fecha");
+  // ===============================
+  // FECHA VISUAL
+  // ===============================
+
+  const fechaInput = document.getElementById("fecha");
   const fakeFecha = document.getElementById("fakeFecha");
 
-  fecha.addEventListener("change", () => {
-    if (fecha.value) {
+  fechaInput.addEventListener("change", () => {
+    if (fechaInput.value) {
       fakeFecha.classList.add("has-value");
     } else {
       fakeFecha.classList.remove("has-value");
@@ -47,13 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ===============================
-  // REFERENCIAS A ELEMENTOS
+  // REFERENCIAS
   // ===============================
+
   const cards = document.querySelectorAll(".card");
   const dueno = document.getElementById("dueno");
   const mascota = document.getElementById("mascota");
   const telefono = document.getElementById("telefono");
-  const fechaInput = document.getElementById("fecha");
   const horaSelect = document.getElementById("hora");
   const servicioSelect = document.getElementById("serviciosSelect");
   const profesionalSelect = document.getElementById("profesionalSelect");
@@ -61,24 +65,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // DATOS FIJOS
   // ===============================
+
   const profesionales = {
     veterinaria: ["Dr. López", "Dra. Martínez", "Dr. Rodríguez"],
     estetica: ["Lucía", "María", "Claudio"],
   };
 
   // ===============================
-  // INIT
+  // GENERAR HORARIOS
   // ===============================
+
   fechaInput.addEventListener("change", generarHorarios);
   servicioSelect.addEventListener("change", () => {
-    if (fechaInput.value) {
-      generarHorarios();
-    }
+    if (fechaInput.value) generarHorarios();
   });
-
-  // ===============================
-  // HORARIOS
-  // ===============================
 
   function generarHorarios() {
     horaSelect.innerHTML = '<option value="">Seleccione hora</option>';
@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const fecha = new Date(fechaInput.value + "T00:00");
     const dia = fecha.getDay();
 
-    // Domingo cerrado
     if (dia === 0) {
       horaSelect.innerHTML =
         '<option value="">No hay atención los domingos</option>';
@@ -98,11 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const horaInicio = 9;
-    const horaFin = dia === 6 ? 12.5 : 18; // sábado hasta 12:30
+    const horaFin = dia === 6 ? 12.5 : 18;
 
-    // Si es estetico el la reserva pasa a ser de una hora
     const servicioValue = servicioSelect.value;
-    const incremento = servicioValue.toLowerCase() === "baño y corte" ? 1 : 0.5;
+    const incremento =
+      servicioValue.toLowerCase() === "baño y corte" ? 1 : 0.5;
 
     for (let hora = horaInicio; hora <= horaFin; hora += incremento) {
       const h = Math.floor(hora);
@@ -120,11 +119,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // SERVICIOS
   // ===============================
+
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       servicioSelect.value = card.dataset.servicio;
       cargarProfesionales(card.dataset.tipo);
-      document.getElementById("reserva").scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById("reserva")
+        .scrollIntoView({ behavior: "smooth" });
     });
   });
 
@@ -134,7 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function cargarProfesionales(tipo) {
-    profesionalSelect.innerHTML = `<option value="">Seleccione profesional</option>`;
+    profesionalSelect.innerHTML =
+      '<option value="">Seleccione profesional</option>';
 
     if (!tipo) return;
 
@@ -144,10 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===============================
-  // RESERVA
+  // UTILIDADES
   // ===============================
 
-  // Función generadora de UUID compatible
   function generarUUID() {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
       /[xy]/g,
@@ -155,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const r = (Math.random() * 16) | 0;
         const v = c === "x" ? r : (r & 0x3) | 0x8;
         return v.toString(16);
-      },
+      }
     );
   }
 
@@ -164,11 +166,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return !reservas.some(
       (r) =>
-        r.fecha === fecha && r.hora === hora && r.profesional === profesional,
+        r.fecha === fecha &&
+        r.hora === hora &&
+        r.profesional === profesional
     );
   }
 
-  window.confirmarReserva = function () {
+  // ===============================
+  // MODAL CONFIRMACIÓN
+  // ===============================
+
+  window.abrirModalConfirmacion = function () {
     if (
       !dueno.value ||
       !mascota.value ||
@@ -186,16 +194,44 @@ document.addEventListener("DOMContentLoaded", () => {
       !profesionalDisponible(
         fechaInput.value,
         horaSelect.value,
-        profesionalSelect.value,
+        profesionalSelect.value
       )
     ) {
       mostrarAlertaError(
-        "El profesional seleccionado no está disponible en la fecha y hora elegidas. Por favor, elija otro horario o profesional.",
+        "El profesional seleccionado no está disponible."
       );
       return;
     }
 
+    const resumen = `
+      <strong>Dueño:</strong> ${dueno.value}<br>
+      <strong>Mascota:</strong> ${mascota.value}<br>
+      <strong>Teléfono:</strong> ${telefono.value}<br>
+      <strong>Fecha:</strong> ${fechaInput.value}<br>
+      <strong>Hora:</strong> ${horaSelect.value}<br>
+      <strong>Servicio:</strong> ${servicioSelect.value}<br>
+      <strong>Profesional:</strong> ${profesionalSelect.value}
+    `;
+
+    document.getElementById("confirmarReserva").innerHTML = resumen;
+    document
+      .getElementById("modal-confirmacion")
+      .classList.add("active");
+  };
+
+  window.cerrarModalConfirmacion = function () {
+    document
+      .getElementById("modal-confirmacion")
+      .classList.remove("active");
+  };
+
+  // ===============================
+  // GUARDAR RESERVA
+  // ===============================
+
+  window.guardarReserva = function () {
     const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+
     reservas.push({
       id: crypto.randomUUID ? crypto.randomUUID() : generarUUID(),
       dueno: dueno.value,
@@ -208,24 +244,41 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     localStorage.setItem("reservas", JSON.stringify(reservas));
-    mostrarAlerta();
+
+    cerrarModalConfirmacion();
+    mostrarModalExito();
+
     document.querySelector(".form").reset();
+    fakeFecha.classList.remove("has-value");
   };
 
-  window.mostrarAlerta = function () {
-    document.getElementById("alerta-overlay").classList.add("active");
+  // ===============================
+  // MODAL ÉXITO
+  // ===============================
+
+  function mostrarModalExito() {
+    document.getElementById("modal-exito").classList.add("active");
+  }
+
+  window.cerrarModalExito = function () {
+    document.getElementById("modal-exito").classList.remove("active");
   };
 
-  window.cerrarAlerta = function () {
-    document.getElementById("alerta-overlay").classList.remove("active");
-  };
+  // ===============================
+  // ERROR
+  // ===============================
 
-  window.mostrarAlertaError = function (mensaje) {
+  function mostrarAlertaError(mensaje) {
     document.getElementById("alerta-error-mensaje").textContent = mensaje;
-    document.getElementById("alerta-error-overlay").classList.add("active");
-  };
+    document
+      .getElementById("alerta-error-overlay")
+      .classList.add("active");
+  }
 
   window.cerrarAlertaError = function () {
-    document.getElementById("alerta-error-overlay").classList.remove("active");
+    document
+      .getElementById("alerta-error-overlay")
+      .classList.remove("active");
   };
+
 });
