@@ -190,6 +190,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // validar que el teléfono sólo contenga dígitos
+    if (!/^[0-9]+$/.test(telefono.value)) {
+      mostrarAlertaError("El teléfono debe contener sólo números.");
+      return;
+    }
+
     if (
       !profesionalDisponible(
         fechaInput.value,

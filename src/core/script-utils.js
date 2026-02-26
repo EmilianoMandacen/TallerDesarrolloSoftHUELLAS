@@ -83,11 +83,17 @@ function obtenerProfesionales(tipo, profesionalesData) {
  * @param {Object} datos - Objeto con los datos del formulario
  * @returns {boolean} true si todos los campos están completos
  */
+function telefonoEsNumerico(telefono) {
+  // acepta sólo dígitos (0-9), sin espacios ni símbolos
+  return typeof telefono === "string" && /^\d+$/.test(telefono);
+}
+
 function validarFormulario(datos) {
   return (
     datos.dueno &&
     datos.mascota &&
     datos.telefono &&
+    telefonoEsNumerico(datos.telefono) &&
     datos.fecha &&
     datos.hora &&
     datos.servicio &&
@@ -122,5 +128,7 @@ if (typeof module !== "undefined" && module.exports) {
     obtenerProfesionales,
     validarFormulario,
     crearReserva,
+    // nuevo helper para validación de teléfono
+    telefonoEsNumerico,
   };
 }

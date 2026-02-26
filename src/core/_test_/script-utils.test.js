@@ -5,6 +5,7 @@ const {
   obtenerProfesionales,
   validarFormulario,
   crearReserva,
+  telefonoEsNumerico,
 } = require("../script-utils");
 
 if (typeof module !== "undefined") {
@@ -221,8 +222,22 @@ describe("obtenerProfesionales", () => {
 });
 
 // ===============================
-// TESTS - validarFormulario
+// TESTS - validarFormulario & teléfono numérico
 // ===============================
+describe("telefonoEsNumerico", () => {
+  test("acepta sólo dígitos", () => {
+    expect(telefonoEsNumerico("1234567890")).toBe(true);
+    expect(telefonoEsNumerico("0987654321")).toBe(true);
+  });
+
+  test("rechaza cadenas con letras o símbolos", () => {
+    expect(telefonoEsNumerico("123-456")).toBe(false);
+    expect(telefonoEsNumerico("abc123")).toBe(false);
+    expect(telefonoEsNumerico("123 456")).toBe(false);
+    expect(telefonoEsNumerico(123456)).toBe(false); // no es string
+  });
+});
+
 describe("validarFormulario", () => {
   const datosValidos = {
     dueno: "Juan",
@@ -233,6 +248,20 @@ describe("validarFormulario", () => {
     servicio: "Baño y Corte",
     profesional: "Dr. López",
   };
+
+  test("retorna true con datos completos y teléfono numérico", () => {
+    expect(validarFormulario(datosValidos)).toBe(true);
+  });
+
+  test("retorna false si falta algún campo", () => {
+    const copia = { ...datosValidos, dueno: "" };
+    expect(validarFormulario(copia)).toBe(false);
+  });
+
+  test("retorna false si el teléfono no es numérico", () => {
+    const copia = { ...datosValidos, telefono: "123abc" };
+    expect(validarFormulario(copia)).toBe(false);
+  });
 });
 // ===============================
 // TESTS - crearReserva
